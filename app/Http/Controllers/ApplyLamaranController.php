@@ -63,7 +63,7 @@ class ApplyLamaranController extends Controller
             }
             DB::commit();
 
-            return response()->json(['message' => 'Kandidat Berhasil di buat', 'data' => $candidate], 201);
+            return response()->json(['message' => 'Kandidat berhasil di buat', 'status' => 'OK'], 201);
         } catch (\Exception $e) {
             DB::rollBack();
 
