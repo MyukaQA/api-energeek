@@ -21,6 +21,16 @@ class ApplyLamaranController extends Controller
                 'email' => 'required|email|unique:candidates,email',
                 'phone' => 'required|numeric|unique:candidates,phone',
                 'year' => 'required',
+            ], [
+                'name.required' => 'Entry nama wajib diisi.',
+                'job_id.required' => 'Entry job id wajib diisi.',
+                'job_id.exists' => 'Id job ini tidak ditemukan.',
+                'email.required' => 'Entry email wajib diisi.',
+                'email.email' => 'Format email tidak valid.',
+                'email.unique' => 'Email sudah dipakai.',
+                'phone.required' => 'Entry telepon wajib diisi.',
+                'phone.unique' => 'Telepon sudah dipakai.',
+                'year.required' => 'Entry Tahun wajib diisi.',
             ]);
 
             if ($validator->fails()) {
@@ -30,6 +40,9 @@ class ApplyLamaranController extends Controller
             $skillsValidator = Validator::make($request->all(), [
                 'skills' => 'required',
                 'skills.*' => 'string|exists:skills,name',
+            ], [
+                'skills.required' => 'Entry skills wajib diisi.',
+                'skills.*.exists' => 'Nama skill tidak ditemukan.',
             ]);
 
             if ($skillsValidator->fails()) {
