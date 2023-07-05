@@ -15,7 +15,14 @@ class Skill extends Model
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at', 'created_by', 'updated_by', 'deleted_by', 'id', 'pivot'];
+
     protected $guarded = [''];
+
+    public function candidates()
+    {
+        return $this->belongsToMany(Candidate::class, 'skill_sets', 'skill_id', 'candidate_id');
+    }
 
     protected static function boot()
     {

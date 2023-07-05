@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplyLamaranController;
+use App\Http\Controllers\CandidateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/apply', [ApplyLamaranController::class, 'apply']);
+Route::get('/candidate/all', [CandidateController::class, 'index']);
+Route::get('/candidate/{id}', [CandidateController::class, 'show']);

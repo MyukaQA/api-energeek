@@ -14,8 +14,14 @@ class Candidate extends Model
     protected $table = 'candidates';
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at', 'created_by', 'updated_by', 'deleted_by'];
 
     protected $guarded = [''];
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'skill_sets', 'candidate_id', 'skill_id');
+    }
 
     protected static function boot()
     {
