@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('job_id');
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->integer('year');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

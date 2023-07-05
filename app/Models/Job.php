@@ -17,7 +17,6 @@ class Job extends Model
 
     protected $guarded = [''];
 
-
     protected static function boot()
     {
         parent::boot();
